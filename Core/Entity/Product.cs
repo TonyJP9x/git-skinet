@@ -1,4 +1,5 @@
 using Core.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Entity
 {
@@ -8,9 +9,12 @@ namespace Core.Entity
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string  PictureUrl { get; set; }
-        public ProductType ProductType { get; set; }
         public int ProductTypeId { get; set; }
-        public ProductBrand ProductBrand { get; set; }
         public int ProductBrandId { get; set; }
+
+        [ForeignKey("ProductTypeId")]
+        public ProductType ProductType { get; set; }
+        [ForeignKey("ProductBrandId")]
+        public ProductBrand ProductBrand { get; set; }
     }
 }
